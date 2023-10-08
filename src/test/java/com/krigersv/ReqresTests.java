@@ -83,9 +83,15 @@ public class ReqresTests extends TestBase {
     void userDeleteTest() {
         given()
                 .log().uri()
+                .log().method()
+                .log().body()
+                .contentType(JSON)
+                .body("{ \"data\": \"email\"}")
+                .when()
                 .delete("/api/users/2")
                 .then()
                 .log().status()
+                .log().body()
                 .statusCode(204);
 
         }
